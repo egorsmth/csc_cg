@@ -1,27 +1,22 @@
-#include <GL/glut.h>
-#include <stdio.h>
+#include "drawing.cpp"
 
-#define FRAME_W 300
-#define FRAME_H 300
 
-void renderPixel(int orig_x, int orig_y, GLclampf r, GLclampf g, GLclampf b) {
-    glBegin(GL_POINTS);
-        glColor3f(r, g, b);
-        float ox = (double)orig_x/(FRAME_W/2) - 1;
-        float oy = -((double)orig_y/(FRAME_H/2) - 1);
-        glVertex2f(ox, oy);
-    glEnd();
-} 
 
 void Display(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    renderPixel(30, 30, 1, 1, 0);
-    renderPixel(100, 100, 0, 1, 0);
-    renderPixel(200, 200, 0, 0, 1);
-    renderPixel(270, 270, 0, 0, 1);
-    renderPixel(290, 290, 1, 0, 1);
-
+    //renderPixel(30, 30, 1, 1, 0);
+    //renderPixel(100, 100, 0, 1, 0);
+    //renderPixel(200, 200, 0, 0, 1);
+    //renderPixel(270, 270, 0, 0, 1);
+    //renderPixel(290, 290, RED);
+    // drawCircle(100, 100, 10, RED);
+    drawLine(10, 100, 100, 10, RED);
+    drawLine(10, 100, 100, 210, RED);
+    drawLine(100, 10, 210, 100, RED);
+    drawLine(100, 210, 210, 100, RED);
+    FloodFill(200, 100, 0, 0.5, 1);
+    //drawLine(250, 5, 100, 100, RED);
     glFlush();
 }
 
